@@ -5,6 +5,8 @@
 
 //% color="#ffb300" icon="\uf2db"
 namespace MCP23008 {
+    let i2c_addr = MCP_Defaults.I2C_ADDRESS
+
     //% blockId="MCP_Setup"
     //% block="MCP Setup | Address %address | IO-Config %iodir | IO-Value: %gpio"
     //% advanced=false
@@ -12,6 +14,14 @@ namespace MCP23008 {
         //i2c_addr = address
         i2c_write(MCP_Regs.IODIR, iodir)
         i2c_write(MCP_Regs.GPIO, gpio)
+    }
+
+    //% blockId="MCP_Setup_Default"
+    //% block="MCP Setup"
+    //% advanced=false
+    export function setupDefault() {
+        i2c_write(MCP_Regs.IODIR, MCP_Defaults.IODIR)
+        i2c_write(MCP_Regs.GPIO, MCP_Defaults.GPIO)
     }
 
     //% blockId="MCP_I2C_Write"
